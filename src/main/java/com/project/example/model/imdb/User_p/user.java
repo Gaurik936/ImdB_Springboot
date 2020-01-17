@@ -27,7 +27,7 @@ public class user {
     @Column(updatable =true,  nullable = false, name = "password")
     private String password;
 
-    @OneToMany( mappedBy="rating",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany( mappedBy="rating",cascade = CascadeType.ALL)
     private List<rating> Rating;
 
     @Column(name = "created_at", nullable = false, updatable = false)
