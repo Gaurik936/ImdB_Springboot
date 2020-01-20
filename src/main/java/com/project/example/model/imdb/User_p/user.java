@@ -1,8 +1,9 @@
 package com.project.example.model.imdb.User_p;
 
+import com.project.example.model.imdb.Audit;
 import com.project.example.model.imdb.Rating_p.rating;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "user")
 
-public class user {
+public class user extends Audit {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -26,24 +27,6 @@ public class user {
 
     @Column(updatable =true,  nullable = false, name = "password")
     private String password;
-
-    @OneToMany( mappedBy="User",cascade = CascadeType.ALL)
-    private List<rating> Rating;
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    @CreationTimestamp
-    @Temporal(value = TemporalType.TIMESTAMP)
-    private Date created_at;
-
-    @Column(name = "updated_at", nullable = false)
-    @UpdateTimestamp
-    @Temporal(value = TemporalType.TIMESTAMP)
-    private Date updated_at;
-
-    public void setRating(List<rating> rating) {
-        Rating = rating;
-    }
-
 
     public Long getId() {
         return id;
