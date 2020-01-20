@@ -15,28 +15,27 @@ public class userController implements Serializable {
     public userRepository userrepository;
 
     @GetMapping("/user")                                                   //GET ALL USERS
-    public List<user> getAllUsers(){
+    public List<User> getAllUsers(){
         return userrepository.findAll();
     }
 
     @GetMapping("/user/{id}")                                              //GET USER BY ID
-    public user getUser(@PathVariable Integer id){
+    public User getUser(@PathVariable Integer id){
         return userrepository.findById(id).orElseThrow(() -> new imdbException("User", "id", id));
     }
 
     @PostMapping("/user")                                                  //INSERT USER
-    public void createUser(@Valid @RequestBody user user){
+    public void createUser(@Valid @RequestBody User user){
         userrepository.save(user);
     }
 
     @PutMapping("/user/{id}")                                              //EDIT USER DETAILS
-    public user updateUser(@PathVariable Integer id, @Valid @RequestBody user user_new){
-        user temp = userrepository.findById(id).orElseThrow(() -> new imdbException("User", "id", id));
-        temp.setUser_name(user_new.getUser_name());
-        temp.setPassword(user_new.getPassword());
-        user new_user = userrepository.save(temp);
+    public User updateUser(@PathVariable Integer id, @Valid @RequestBody User userNew){
+        User temp = userrepository.findById(id).orElseThrow(() -> new imdbException("User", "id", id));
+        temp.setUserName(userNew.getUserName());
+        temp.setPwd(userNew.getPwd());
+        User new_user = userrepository.save(temp);
         return new_user;
-
     }
 
     @DeleteMapping("/user/{id}")                                           //DELETE USER

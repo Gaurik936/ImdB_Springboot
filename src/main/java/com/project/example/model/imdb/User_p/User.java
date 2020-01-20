@@ -9,9 +9,7 @@ import java.util.List;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "user")
-
-public class user extends Audit {
+public class User extends Audit {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -19,13 +17,13 @@ public class user extends Audit {
     private Integer id;
 
     @Column(updatable = true , nullable = false , name = "user_name")
-    private String user_name;
+    private String name;
 
     @Column(updatable =true,  nullable = false, name = "password")
-    private String password;
+    private String pwd;
 
-    /*@OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    List<user> users= new ArrayList<user>();*/
+   /* @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<User> users = new ArrayList<User>();*/
 
     public Integer getId() {
         return id;
@@ -35,21 +33,20 @@ public class user extends Audit {
         this.id = id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return name;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String name) {
+        this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
-
 }
 
