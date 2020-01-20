@@ -1,16 +1,11 @@
 package com.project.example.model.imdb.User_p;
 
 import com.project.example.model.imdb.Audit;
-import com.project.example.model.imdb.Rating_p.rating;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -29,7 +24,7 @@ public class user extends Audit {
     @Column(updatable =true,  nullable = false, name = "password")
     private String password;
 
-    /*@OneToMany(mappedBy = "User")
+    /*@OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<user> users= new ArrayList<user>();*/
 
     public Integer getId() {

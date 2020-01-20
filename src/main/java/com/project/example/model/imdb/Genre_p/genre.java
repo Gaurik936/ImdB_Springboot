@@ -24,9 +24,9 @@ public class genre extends Audit {
     @Column(name ="genre_title", nullable = false)
     private String genre_title;
 
-    /*@OneToOne(mappedBy = "Genre")
-    private movie Movie;
-*/
+   /* @OneToOne(mappedBy = "Genre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private movie Movie;*/
+
     public int getGenre_id() {
         return genre_id;
     }

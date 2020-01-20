@@ -1,5 +1,6 @@
 package com.project.example.model.imdb.Rating_p;
 
+import com.project.example.model.imdb.Movie_p.movieRepository;
 import com.project.example.model.imdb.User_p.user;
 import com.project.example.model.imdb.User_p.userRepository;
 import com.project.example.model.imdb.imdbException;
@@ -22,23 +23,26 @@ public class ratingController {
     @Autowired
     public ratingRepository ratingrepository;
 
-    @GetMapping("/user/{id}/ratings")                                                   //GET ALL USERS
-    public Page<rating> getAllRatings(@PathVariable Long id, Pageable pageable){
+    @Autowired
+    public movieRepository movierepository;
+
+    @GetMapping("/user/{id}/ratings")
+    public Page<rating> getAllRatings(@PathVariable Integer id, Pageable pageable){
         return ratingrepository.findRatingByUserId(id, pageable);
     }
 
-    @GetMapping("/user/{user_id}/ratings/{id}")                                              //GET USER BY ID
+    @GetMapping("/user/{user_id}/ratings/{id}")
     public rating getRating(@PathVariable Integer id){
         return ratingrepository.findById(id).orElseThrow(() -> new imdbException("Rating", "id", id));
     }
 
-    @PostMapping("/user/{id}/ratings")                                                  //INSERT USER
+    @PostMapping("/user/{id}/ratings")
     public rating createRating(@PathVariable Integer id, @Valid @RequestBody rating rating){
         return userrepository.findById(id).map(user -> {rating.setUser(user);
         return ratingrepository.save(rating);}).orElseThrow(() -> new imdbException("Rating", "id", id));
     }
 
-    @PutMapping("/user/{user_id}/ratings/{rating_id}")                                              //EDIT USER DETAILS
+    @PutMapping("/user/{user_id}/ratings/{rating_id}")
     public rating updateRating(@PathVariable Integer rating_id, @PathVariable Integer user_id, @Valid @RequestBody rating rating_new){
         if(!userrepository.existsById(user_id))
             throw new imdbException("User", "id", user_id);
@@ -59,4 +63,6 @@ public class ratingController {
         }).orElseThrow(() -> new imdbException("Rating", "id" , rating_id));
 
     }*/
+
+
 }

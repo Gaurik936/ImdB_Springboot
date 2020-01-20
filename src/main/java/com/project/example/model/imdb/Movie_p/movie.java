@@ -31,10 +31,9 @@ public class movie extends Audit {
     public int getMovie_id() {
         return movie_id;
     }
-
-    /*@OneToMany(mappedBy = "Movie")
-    List<movie> movies= new ArrayList<movie>();*/
-
+    /*@OneToMany(mappedBy = "Movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<movie> movies= new ArrayList<movie>();
+*/
     public void setMovie_id(int movie_id) {
         this.movie_id = movie_id;
     }

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ratingRepository extends JpaRepository<rating , Integer> {
 
-    Page<rating> findRatingByUserId(Long id, Pageable pageable);
+    Page<rating> findRatingByUserId(Integer id, Pageable pageable);
 
     //Optional findByIdAndRatingId(Integer user_id, Integer rating_id);
 }
