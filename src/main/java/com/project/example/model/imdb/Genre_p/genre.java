@@ -24,7 +24,7 @@ public class genre {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date updated_at;
 
-    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "Genre", cascade = CascadeType.ALL)
     private movie Movie;
 
     public void setCreated_at(Date created_at) {

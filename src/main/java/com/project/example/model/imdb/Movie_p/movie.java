@@ -27,7 +27,7 @@ public class movie implements Serializable {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date updated_at;
 
-    @OneToMany(mappedBy="rating", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="Movie", cascade = CascadeType.ALL)
     private List<rating> Rating;
 
     @OneToOne(cascade = CascadeType.ALL)
