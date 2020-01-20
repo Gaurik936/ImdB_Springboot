@@ -1,4 +1,4 @@
-package com.project.example.model.imdb.User_p;
+package com.project.example.model.imdb;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

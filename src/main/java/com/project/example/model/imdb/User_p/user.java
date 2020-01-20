@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class user extends Audit {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Long id;
+    private Integer id;
 
     @Column(updatable = true , nullable = false , name = "user_name")
     private String user_name;
@@ -28,11 +29,14 @@ public class user extends Audit {
     @Column(updatable =true,  nullable = false, name = "password")
     private String password;
 
-    public Long getId() {
+    /*@OneToMany(mappedBy = "User")
+    List<user> users= new ArrayList<user>();*/
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

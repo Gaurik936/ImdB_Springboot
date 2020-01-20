@@ -17,10 +17,11 @@ public class rating extends Audit {
 
     @Id
     @Column(name = "rating_id")
-    private int rating_id;
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    private Integer rating_id;
 
     @Column(name = "ratings")
-    private int ratings;
+    private Long ratings;
 
     @Column(name = "text_review")
     private String review;
@@ -33,19 +34,19 @@ public class rating extends Audit {
     @JoinColumn(name="movie_id")
     private movie Movie;
 
-    public int getRating_id() {
+    public Integer getRating_id() {
         return rating_id;
     }
 
-    public void setRating_id(int rating_id) {
+    public void setRating_id(Integer rating_id) {
         this.rating_id = rating_id;
     }
 
-    public int getRatings() {
+    public long getRatings() {
         return ratings;
     }
 
-    public void setRatings(int ratings) {
+    public void setRatings(long ratings) {
         this.ratings = ratings;
     }
 
@@ -57,4 +58,19 @@ public class rating extends Audit {
         this.review = review;
     }
 
+    public user getUser() {
+        return User;
+    }
+
+    public void setUser(user user) {
+        User = user;
+    }
+
+    public movie getMovie() {
+        return Movie;
+    }
+
+    public void setMovie(movie movie) {
+        Movie = movie;
+    }
 }

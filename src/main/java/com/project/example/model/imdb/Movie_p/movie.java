@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +31,9 @@ public class movie extends Audit {
     public int getMovie_id() {
         return movie_id;
     }
+
+    /*@OneToMany(mappedBy = "Movie")
+    List<movie> movies= new ArrayList<movie>();*/
 
     public void setMovie_id(int movie_id) {
         this.movie_id = movie_id;
