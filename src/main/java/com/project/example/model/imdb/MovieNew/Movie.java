@@ -1,39 +1,36 @@
-package com.project.example.model.imdb.Movie_p;
+package com.project.example.model.imdb.MovieNew;
 
 import com.project.example.model.imdb.Audit;
-import com.project.example.model.imdb.Genre_p.Genre;
+import com.project.example.model.imdb.GenreNew.Genre;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table
 public class Movie extends Audit {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "movie_id")
     @Id
-    private int movieId;
+    private int id;
 
     @Column(name = "movie_name")
     private String movieName;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
    /* @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Movie> movies= new ArrayList<Movie>();*/
 
-    public int getMovieId() {
-        return movieId;
+    public int getId() {
+        return id;
     }
 
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
+    public void setId(int movieId) {
+        this.id = movieId;
     }
 
     public String getMovieName() {

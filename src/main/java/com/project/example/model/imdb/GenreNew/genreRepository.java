@@ -1,4 +1,4 @@
-package com.project.example.model.imdb.Genre_p;
+package com.project.example.model.imdb.GenreNew;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

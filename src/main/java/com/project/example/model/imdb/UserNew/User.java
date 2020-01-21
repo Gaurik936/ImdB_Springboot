@@ -1,10 +1,9 @@
-package com.project.example.model.imdb.User_p;
+package com.project.example.model.imdb.UserNew;
 
 import com.project.example.model.imdb.Audit;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -16,10 +15,10 @@ public class User extends Audit {
     @Column(name = "user_id")
     private Integer id;
 
-    @Column(updatable = true , nullable = false , name = "user_name")
+    @Column(name = "user_name")
     private String name;
 
-    @Column(updatable =true,  nullable = false, name = "password")
+    @Column(name = "password")
     private String pwd;
 
    /* @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

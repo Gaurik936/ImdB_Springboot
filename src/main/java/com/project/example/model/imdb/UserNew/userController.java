@@ -1,4 +1,4 @@
-package com.project.example.model.imdb.User_p;
+package com.project.example.model.imdb.UserNew;
 
 import com.project.example.model.imdb.imdbException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +34,8 @@ public class userController implements Serializable {
         User temp = userrepository.findById(id).orElseThrow(() -> new imdbException("User", "id", id));
         temp.setUserName(userNew.getUserName());
         temp.setPwd(userNew.getPwd());
-        User new_user = userrepository.save(temp);
-        return new_user;
+        User newUser = userrepository.save(temp);
+        return newUser;
     }
 
     @DeleteMapping("/user/{id}")                                           //DELETE USER

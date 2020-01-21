@@ -1,12 +1,13 @@
-package com.project.example.model.imdb.Genre_p;
+package com.project.example.model.imdb.GenreNew;
 
 import com.project.example.model.imdb.Audit;
-import com.project.example.model.imdb.Movie_p.Movie;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
+
 @Entity
+@Table
 @EntityListeners(AuditingEntityListener.class)
 public class Genre extends Audit {
 

@@ -1,4 +1,4 @@
-package com.project.example.model.imdb.User_p;
+package com.project.example.model.imdb.UserNew;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

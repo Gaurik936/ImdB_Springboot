@@ -1,8 +1,8 @@
-package com.project.example.model.imdb.Rating_p;
+package com.project.example.model.imdb.RatingNew;
 
 import com.project.example.model.imdb.Audit;
-import com.project.example.model.imdb.Movie_p.Movie;
-import com.project.example.model.imdb.User_p.User;
+import com.project.example.model.imdb.MovieNew.Movie;
+import com.project.example.model.imdb.UserNew.User;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -14,7 +14,7 @@ public class Rating extends Audit {
     @Id
     @Column(name = "rating_id")
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private Integer ratingId;
+    private Integer id;
 
     private Long ratings;
 
@@ -29,12 +29,12 @@ public class Rating extends Audit {
     @JoinColumn(name="movie_id")
     private Movie movie;
 
-    public Integer getRatingId() {
-        return ratingId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRatingId(Integer ratingId) {
-        this.ratingId = ratingId;
+    public void setId(Integer ratingId) {
+        this.id = ratingId;
     }
 
     public Long getRatings() {

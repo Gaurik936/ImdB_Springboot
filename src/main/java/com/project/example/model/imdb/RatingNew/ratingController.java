@@ -1,12 +1,13 @@
-package com.project.example.model.imdb.Rating_p;
+package com.project.example.model.imdb.RatingNew;
 
-import com.project.example.model.imdb.Movie_p.movieRepository;
-import com.project.example.model.imdb.User_p.userRepository;
+import com.project.example.model.imdb.MovieNew.movieRepository;
+import com.project.example.model.imdb.UserNew.userRepository;
 import com.project.example.model.imdb.imdbException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 
 @RestController
@@ -38,13 +39,13 @@ public class ratingController {
     }
 
     @PutMapping("/user/{userId}/ratings/{ratingId}")
-    public Rating updateRating(@PathVariable Integer ratingId, @PathVariable Integer userId, @Valid @RequestBody Rating rating_new){
+    public Rating updateRating(@PathVariable Integer ratingId, @PathVariable Integer userId, @Valid @RequestBody Rating ratingNew){
         if(!userrepository.existsById(userId))
             throw new imdbException("User", "id", userId);
 
         Rating temp = ratingrepository.findById(ratingId).orElseThrow(() -> new imdbException("Rating", "id", ratingId));
-        temp.setRatings(rating_new.getRatings());
-        temp.setReview(rating_new.getReview());
+        temp.setRatings(ratingNew.getRatings());
+        temp.setReview(ratingNew.getReview());
         Rating newRating = ratingrepository.save(temp);
         return newRating;
 
@@ -59,5 +60,14 @@ public class ratingController {
 
     }*/
 
+    @GetMapping("/movie/{id}/ratings")
+    public Page<Rating> getAllMovieRatings(@PathVariable Integer id, Pageable pageable){
+        return ratingrepository.findRatingByMovieId(id, pageable);
+    }
+
+    @GetMapping("/movie/{movieId}/ratings/{id}")
+    public Rating getMovieRating(@PathVariable Integer id){
+        return ratingrepository.findById(id).orElseThrow(() -> new imdbException("Rating", "id", id));
+    }
 
 }
