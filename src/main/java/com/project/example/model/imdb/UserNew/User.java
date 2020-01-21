@@ -4,8 +4,6 @@ import com.project.example.model.imdb.Audit;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -23,8 +21,8 @@ public class User extends Audit {
     @Column(name = "password")
     private String pwd;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    List<User> users = new ArrayList<User>();
+    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<User> users = new ArrayList<User>();*/
 
     public Integer getId() {
         return id;

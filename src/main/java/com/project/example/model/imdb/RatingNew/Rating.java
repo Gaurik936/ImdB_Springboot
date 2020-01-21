@@ -33,8 +33,8 @@ public class Rating extends Audit {
         return id;
     }
 
-    public void setId(Integer ratingId) {
-        this.id = ratingId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Long getRatings() {

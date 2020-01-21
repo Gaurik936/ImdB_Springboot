@@ -1,15 +1,12 @@
 package com.project.example.model.imdb.GenreNew;
 
 import com.project.example.model.imdb.Audit;
-import com.project.example.model.imdb.MovieNew.Movie;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
-@Entity
+@Entity()
 @Table
 @EntityListeners(AuditingEntityListener.class)
 public class Genre extends Audit {
@@ -22,8 +19,8 @@ public class Genre extends Audit {
     @Column(name ="genre_title", nullable = false)
     private String genreTitle;
 
-    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    List<Movie> movies =new ArrayList<Movie>();
+  /*  @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<Movie> movies =new ArrayList<Movie>();*/
 
     public Integer getGenreId() {
         return genreId;
